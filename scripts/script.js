@@ -8,7 +8,6 @@ listaTonalidades.forEach(obj => {
 		console.log(tonalidad);
 		mostrarDatos();
 	});
-
 });
 
 boton = document.querySelector(".botones");
@@ -30,7 +29,31 @@ boton.addEventListener('animationend', () => {
 	estilo = boton.style.display;
 });
 
-// animaciones para los botones de los modos menores:
+// funciones para mostrar los datos:
+const datosMayor = () => {
+	let contenido = '';
+	notasTonalidad(tonalidad).forEach(nota => {
+		nota = nota.replace("#","<sup>&#9839</sup>");	
+		nota = nota.replace("b","<sup>&#9837</sup>");
+		contenido += nota + ' ';
+	});
+	document.querySelector("#notas").innerHTML = contenido;
+}
+
+const datosMenor = () => {
+	let contenido = '';
+	tonalidad = tonalidad.replace("m","");
+	alterar(tonalidad,tipo).forEach(nota => {
+		if (!nota.includes("&#119082")) {
+			nota = nota.replace("#","<sup>&#9839</sup>");
+			nota = nota.replace("b","<sup>&#9837</sup>");
+		}
+		contenido += nota + ' ';
+	});
+	document.querySelector("#notas").innerHTML = contenido;
+}
+
+// selector de modos menores con animaciones y llamada a las funciones de mostrar datos:
 const mostrarDatos = () => {
 	let datos = document.querySelector("#datos");
 
@@ -44,15 +67,22 @@ const mostrarDatos = () => {
 	};
 
 	tono = document.querySelector(".tono p");
-	tonalidad = tonalidad.replace("#","<sup>&#9839</sup>");	
-	tonalidad = tonalidad.replace("b","<sup>&#9837</sup>");
-	tono.innerHTML = tonalidad;
+	let tonalidad_local = tonalidad
+	tonalidad_local = tonalidad_local.replace("#","<sup>&#9839</sup>");	
+	tonalidad_local = tonalidad_local.replace("b","<sup>&#9837</sup>");
+	tono.innerHTML = tonalidad_local;
 
-	if (!tonalidad.includes("m")) datosMayor();
+	if (!tonalidad.includes("m")){
+		datosMayor();
+	} else {
+		tipo = 'menor';
+		document.querySelectorAll(".b_menores").forEach(obj => obj.style.backgroundColor = "white");
+		document.querySelector("#menor").style.backgroundColor = "lightgray";
+		datosMenor();
+	} ;
 };
 
 document.querySelectorAll(".b_menores").forEach(obj => {
-	
 	obj.addEventListener("click", (e) => {
 		e.preventDefault();
 		tipo = obj.id;
@@ -62,14 +92,6 @@ document.querySelectorAll(".b_menores").forEach(obj => {
 	});
 	
 });
-
-const datosMayor = () => {
-	console.log(`datos de ${tonalidad} mayor`);
-}
-
-const datosMenor = () => {
-	console.log(`datos de ${tonalidad} menor ${tipo}`);
-}
 
 // inicia la página en do mayor:
 tonalidad = "C";

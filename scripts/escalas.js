@@ -51,6 +51,14 @@ const tonalidades = [
 	"nombre": "F",
 	"notas": ["F","G","A","Bb","C","D","E"],
 },
+{
+	"nombre": "C#",
+	"notas": ["C#","D#","E#","F#","G#","A#","B#"],
+},
+{
+	"nombre": "G#",
+	"notas": ["G#","A#","B#","C#","D#","E#","F##"],
+},
 ]
 
 
@@ -123,13 +131,17 @@ const notasTonalidad = (nota) => {
 const alterar = (tonalidad,alt) => {
 	let alterado = [];
 	let escala = notasTonalidad(tonalidad);
-
 	escalas.forEach(obj => {
 		if(obj.nombre == alt){
 			let i = 0;
 			escala.forEach(nota => {
-				if(nota.includes("#") && obj.alteraciones[i] == "b") alterado.push(nota.substring(0,1));
-				else alterado.push(nota + obj.alteraciones[i]);
+				if(nota == "F##"){
+					if(obj.alteraciones[i] == "b") alterado.push("F#");
+					else alterado.push("F&#119082");
+				} else{
+					if(nota.includes("#") && obj.alteraciones[i] == "b") alterado.push(nota.substring(0,1));
+					else alterado.push(nota + obj.alteraciones[i]);
+				}
 				i++;
 			});
 		};
@@ -148,7 +160,7 @@ const modo = (nota,tonalidad,modo) => {
 		notasModo.push(grado);		// mete el elemento al final
 	}
 
-	return notasModo;
+	return notasModo; 
 };
 
 console.log(modo("D","menor_arm",7));

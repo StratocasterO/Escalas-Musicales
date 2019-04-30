@@ -72,15 +72,15 @@ body{
 }
 .tono{
 	display: block;
-	width: 100px;
-	height: 100px;
+	width: 129px;
+	height: 80px;
 	border: 1px solid black;
-	margin: 10px auto;
+	margin: 10px auto 40px;
 	text-align: center;
 }
 .tono p{
 	font-size: 40px;
-	margin: 25px auto;
+	margin: 18px auto;
 }
 .selector{
 	display: inline-block;
@@ -88,6 +88,7 @@ body{
 }
 .botones{
 	margin: auto;
+	margin-bottom: 30px;
 	text-align: center;
 }
 .menores{
@@ -96,7 +97,7 @@ body{
 .menores li{
 	display: inline-block;
 }
-#nat,#arm,#mel{
+#menor,#menor_arm,#menor_mel{
 	display: inline-block;
 	text-align: center;
 	width: 150px;
@@ -125,6 +126,16 @@ footer{
 .cont img{
 	width: 640px;
 	margin: 30px auto;
+}
+#datos h2{
+	width: 800px;
+	margin: auto;
+	font-size: 1.5em;
+}
+#notas{
+	text-align: center;
+	font-size: 40px;
+	margin-top: 10px;
 }
 .col{
 	width: 22%;
@@ -155,6 +166,4 @@ footer{
 .chord{
 	color: black;
 	font-size: 2em;
-}
-.circulo{
 }

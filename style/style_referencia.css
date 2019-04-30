@@ -78,7 +78,7 @@ body{
 .menores li{
 	display: inline-block;
 }
-#nat,#har,#mel{
+#menor,#menor_arm,#menor_mel{
 	display: inline-block;
 	text-align: center;
 	width: 150px;
@@ -130,6 +130,4 @@ footer{
 .chord{
 	color: black;
 	font-size: 2em;
-}
-.circulo{
 }
