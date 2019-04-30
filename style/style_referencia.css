@@ -1,0 +1,135 @@
+*{
+	font-family: arial;
+	margin: 0px;
+}
+html{
+	height: 100%
+}
+h1{
+	background-color: #4F4F4F;
+	text-align: center;
+	color: white;
+	padding: 20px 5px;
+	font-size: 2em;
+	top: 0;
+	position: sticky;
+}
+h2{
+	background-color: #8D8D8D;
+	text-align: center;
+	color: white;
+	padding: 5px;
+	padding-right: 10px;
+	font-weight: lighter;
+	font-size: .8em;
+}
+h3{
+	text-align: center;
+	background-color: #A9A9A9;
+	padding: 15px;
+	margin-bottom: 5px;
+}
+h4{
+	background-color: #D4D4D4;
+	color: black;
+}
+a{
+	color: black;
+	text-decoration: none;
+}
+sup{
+	font-size: .6em;
+}
+nav{
+	background-color: #8D8D8D;
+	padding: 5px 0;
+	width: 100%;
+	margin-bottom: 30px;
+	top: 78px;
+	position: sticky;
+}
+nav ul{
+	margin: auto;
+	width: 600px;
+	padding: 0;
+	list-style: none;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+}
+nav a{
+	display: inline-block;
+	padding: 5px 15px;
+	border: 1px solid white;
+	text-decoration: none;
+	color: white;
+	background-color: #8D8D8D;
+}
+body{
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+.menores{
+	margin: auto;
+	padding: 0;
+	display: none;
+}
+.menores li{
+	display: inline-block;
+}
+#nat,#har,#mel{
+	display: inline-block;
+	text-align: center;
+	width: 150px;
+	padding: 20px;
+	margin: 10px;
+	border: 1px solid black;
+}
+footer{
+	width: 100%;
+	margin-top: 30px;
+	flex-shrink: 0; /* para que el footer quede pegado abajo */
+}
+.cont{
+	margin: auto;
+	width: 1024px;
+	display: flex;
+	/*flex: 1 0 auto;  no necesario para poner el footer abajo*/
+}
+.cont img{
+	width: 640px;
+	margin: 30px auto;
+}
+.col{
+	width: 22%;
+	display: flex;
+	border-right: 3px dashed #4F4F4F;
+	border-left: 3px dashed #4F4F4F;
+	text-align: center;
+	margin: 10px;
+	padding-right: 10px;
+	padding-left: 10px;
+	color: white;
+	vertical-align: top;
+	flex-direction: column;
+	justify-content: space-between;
+}
+.box{
+	border: 2px dotted #4F4F4F;
+	margin-bottom: 5px;
+	display: flex;
+	flex-direction: column;
+}
+.boxf{
+	margin-bottom: 0px;
+}
+.box p{
+	color: black;
+}
+.chord{
+	color: black;
+	font-size: 2em;
+}
+.circulo{
+}
