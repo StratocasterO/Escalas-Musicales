@@ -2,32 +2,33 @@ const listaTonalidades = ["F","Bb","Eb","Ab","Db","Gb","F#","B","E","A","D","G",
 
 // al cargar la página añade un detector de clic a cada campo:
 listaTonalidades.forEach(obj => {
-	document.querySelector('area[title="' + obj +'"]').addEventListener("click", (event) => {
-		event.preventDefault();
-		tonalidad = obj;
-		console.log(tonalidad);
-		mostrarDatos();
-	});
+	if(document.querySelector('area') != null){
+		document.querySelector('area[title="' + obj +'"]').addEventListener("click", (event) => {
+			event.preventDefault();
+			tonalidad = obj;
+			console.log(tonalidad);
+			mostrarDatos();
+		});
+	}
 });
 
-boton = document.querySelector(".botones");
-
-// el estilo tiene que estar en linea para que funcione la línea anterior. Si viene de una hoja de estilos, hay que usar:
-// estilo =  boton.currentStyle ? boton.currentStyle['display'] : window.getComputedStyle ? window.getComputedStyle(boton, null).getPropertyValue('display') : null;
-estilo = boton.style.display;
-
-// función que acaba las animaciones:
-boton.addEventListener('animationend', () => {	
-	if (estilo == "none"){
-		boton.classList.remove('animated');
-		boton.classList.remove('fadeInDown');
-	} else {
-		boton.classList.remove('animated');
-		boton.classList.remove('fadeOutUp');
-		boton.style.display = "none";
-	};
+if(document.querySelector(".botones") != null){
+	boton = document.querySelector(".botones");
 	estilo = boton.style.display;
-});
+
+	// función que acaba las animaciones:
+	boton.addEventListener('animationend', () => {	
+		if (estilo == "none"){
+			boton.classList.remove('animated');
+			boton.classList.remove('fadeInDown');
+		} else {
+			boton.classList.remove('animated');
+			boton.classList.remove('fadeOutUp');
+			boton.style.display = "none";
+		};
+		estilo = boton.style.display;
+	});
+};
 
 // funciones para mostrar los datos:
 const datosMayor = () => {
@@ -37,7 +38,9 @@ const datosMayor = () => {
 		nota = nota.replace("b","<sup>&#9837</sup>");
 		contenido += nota + ' ';
 	});
-	document.querySelector("#notas").innerHTML = contenido;
+	if(document.querySelector("#notas") != null){
+		document.querySelector("#notas").innerHTML = contenido;
+	}
 }
 
 const datosMenor = () => {
@@ -82,6 +85,7 @@ const mostrarDatos = () => {
 	} ;
 };
 
+// activa los botones para seleccionar el modo menor (nat, arm o mel):
 document.querySelectorAll(".b_menores").forEach(obj => {
 	obj.addEventListener("click", (e) => {
 		e.preventDefault();
@@ -93,6 +97,36 @@ document.querySelectorAll(".b_menores").forEach(obj => {
 	
 });
 
-// inicia la página en do mayor:
+// selector de tonalidad en la página de referencia:
+const tonalidadesMayores = [" ","C","Db","D","Eb","E","F","Gb","G","Ab","A","Bb","B"]
+selectores = ''
+tonalidadesMayores.forEach(obj => {
+	selectores += `<option value="${obj}">${obj}</option>`
+});
+if(document.querySelector("#escoger_tono") != null){
+	document.querySelector("#escoger_tono").innerHTML = selectores;
+};
+
+if(document.querySelector("select") != null){
+	document.querySelector("select").addEventListener("change",() => {
+		let tono = document.querySelector("#escoger_tono").value;
+		if (tono == " ") location.reload();
+		let i=0;
+		document.querySelectorAll(".ch").forEach(chord => {
+			if (chord.closest(".col").id == "mayor") chord.innerHTML = notasTonalidad(tono)[i]; 
+			if (chord.closest(".col").id == "menor") chord.innerHTML = alterar(tono,"menor")[i-7];
+			if (chord.closest(".col").id == "menor_mel") chord.innerHTML = alterar(tono,"menor_mel")[i-14];
+			if (chord.closest(".col").id == "menor_arm") chord.innerHTML = alterar(tono,"menor_arm")[i-21];
+			i++;
+		});
+		document.querySelectorAll(".ch").forEach(chord => {
+			chord.innerHTML = chord.innerHTML.replace("bb","<sup>&#119083</sup>");
+			chord.innerHTML = chord.innerHTML.replace("#","<sup>&#9839</sup>");
+			chord.innerHTML = chord.innerHTML.replace("b","<sup>&#9837</sup>");
+		});
+	});
+};
+
+//inicia la página index.html en do mayor:
 tonalidad = "C";
 datosMayor(tonalidad);

@@ -127,9 +127,15 @@ footer{
 	width: 640px;
 	margin: 30px auto;
 }
+.cont h2{
+	width: 1024px;
+	margin: 20px auto;
+	font-size: 1.5em;
+}
 #datos h2{
 	width: 800px;
 	margin: auto;
+	margin-top: 40px;
 	font-size: 1.5em;
 }
 #notas{

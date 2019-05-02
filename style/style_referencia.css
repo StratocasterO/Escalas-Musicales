@@ -78,14 +78,6 @@ body{
 .menores li{
 	display: inline-block;
 }
-#menor,#menor_arm,#menor_mel{
-	display: inline-block;
-	text-align: center;
-	width: 150px;
-	padding: 20px;
-	margin: 10px;
-	border: 1px solid black;
-}
 footer{
 	width: 100%;
 	margin-top: 30px;

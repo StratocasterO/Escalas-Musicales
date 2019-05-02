@@ -85,7 +85,7 @@ const escalas = [
 	"nombre": "menor_mel",
 	"alteraciones": ["","","b","","","",""],
 	"modos": ["menor_mel","dorico_b9","lidio_aum","lidio_dom","mixolidio_b13","locrio_#9","alterada"],
-	"acordes": ["-maj7","-7(b5)","+maj7","-7","7","maj7","dim"],
+	"acordes": ["-maj7","-7(b5)","+maj7","-7","7","maj7","dim7"],
 }
 ]
 
@@ -107,12 +107,16 @@ const acordes = [
 	"grados": ["","b","b","b"]
 },
 {
-	"nombre": "dim",
+	"nombre": "dim7",
 	"grados": ["","b","b","bb"]
 },
 {
-	"nombre": "+",
+	"nombre": "+maj7",
 	"grados": ["","","#",""]
+},
+{
+	"nombre": "-maj7",
+	"grados": ["","b","",""]
 },
 ]
 
@@ -152,7 +156,7 @@ const alterar = (tonalidad,alt) => {
 
 // devuelve el modo (del 1 al 7) de una tonalidad mayor, menor, menor armónica (menor_arm) o menor melódica (menor_mel):
 const modo = (nota,tonalidad,modo) => {
-	let notasModo = (alterar(nota,tonalidad));
+	let notasModo = alterar(nota,tonalidad);
 
 	console.log(notasModo)
 	for (let i=1; i<=modo-1; i++) {
@@ -163,4 +167,6 @@ const modo = (nota,tonalidad,modo) => {
 	return notasModo; 
 };
 
-console.log(modo("D","menor_arm",7));
+const acorde = (nota,tonalidad,tipo) => {
+	let notasModo = alterar()
+}
