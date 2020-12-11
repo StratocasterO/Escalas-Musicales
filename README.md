@@ -1,4 +1,4 @@
-# escalas-musicales
+# Escalas Musicales
 
 Web creada como referencia para la improvisación jazz (acordes, escalas modales, etc).
 
